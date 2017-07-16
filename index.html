@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Crossword</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="dist/css/bootstrap.min.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/css/style.css">
+<script type="text/javascript" src="dist/js/crossword.js"></script>
+<script type="text/javascript" src="dist/js/script.js"></script>
+
+<script type="text/javascript">
+
+var cross_data =[];
+var words = [];
+var clues = [];
+var empID = '';
+</script>
+
+</head>
+
+<body> 
+<div class="col-md-4"></div>
+<div class="col-md-4 loginBox" id="loginBox">
+	<form id="login" name="login" class="form-horizontal">
+		<div id="loginError"></div>
+		<div class="form-group col-md-3  col-lg-12">
+			<label for="name" > Login Name: </label>
+			<input type="text" name="loginId" class="form-control" placeholder="Enter Username"></input>
+		</div>
+		<div class="form-group col-md-3  col-lg-12">
+			<label> Password: </label>
+			<input type="password" name="password" class="form-control" placeholder="Enter Your Password"></input>
+		</div
+		<div class="text-center">
+			<button type="button" id="loginButton" role="button" class="btn btn-lg btn-info" name="loginButton" onclick="logincheck()">Log In</button>
+		</div>
+	</form>
+</div>
+<div class="col-md-4"></div>
+
+
+<div class="col-md-3"></div>
+<div id="crosswordBox" class="hide col-md-6">
+	<form id="crossword_create" name="crossword_create">
+	<label for='generate'> Write your question and answer with comma separated below to generate the grid(<a onclick="sample()">View sample</a>)</label>
+	<div class="form-group col-md-3  col-lg-12">
+		<textarea class="form-control" id="grid_ques" placeholder="Type your question and answer here........" name="grud_ques" required rows="15"></textarea>
+	</div>
+	<div class="form-group col-md-3  col-lg-12">
+		<button type="button" id="generate_quiz" role="button" class="btn btn-lg btn-info" name="generate_quiz" onclick="generate()">Generate Puzzle</button>
+	</div>
+	</form>
+</div>
+<div class="col-md-3"></div>
+
+<div id="puzzleBox" id="puzzleBox" class="hide">
+    <section>
+        <form id="crossword_form" name="crossword_form">
+
+            <div id="crossword_box">
+                <div id="crossword"></div>
+            </div>
+            <div class="text-center ">
+                <button type="button" id="submit_result" class="btn btn-info" onclick="download()" name="submit_result" >Create This Puzzle Link</button>
+            </div>
+        </form>
+        <!--<div class="text-center ">
+            <button type="button" id="regenerate" class="btn btn-info" onclick="generate()" name="regenerate" >Regenerate</button>
+        </div>-->
+    </section>
+	<div class="clue_box" id="clue_box">
+        <section>
+            <table id="clues">
+                <thead>
+                <tr>
+                    <th>Across</th>
+                    <th>Down</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><ul id="across"></ul></td>
+                    <td><ul id="down"></ul></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+	</div>
+	
+</div>
+
+<div id="created_url" class="generated_link"></div>
+
+</body>
+
+</html>

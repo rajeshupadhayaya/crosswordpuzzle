@@ -1,0 +1,119 @@
+#crossword {
+    text-align:center;
+}
+
+body{
+    margin:50px;
+}
+
+section{
+    margin: 30px;
+    padding: 20px;
+}
+
+.crossword {
+    border-collapse:collapse;
+    font-family:"Courier New", Courier, monospace;
+    margin-left:auto;
+    margin-right:auto;
+    clear:both;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.crossword td .all-border{
+    border:1px solid black;
+    padding:0;
+    margin:0;
+    vertical-align:middle;
+    padding:0;
+    text-align:center;
+    width:30px;
+    height:30px;
+}
+
+.crossword .no-border {
+    border: solid 1px #003366;
+    background-color: #003366;
+    font-size: 18px;
+    font-family: Courier New;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+.crossword .all-border {
+    border: solid 1px #003366;
+    background-color: #FFFFFF;
+    font-size: 18px;
+    font-family: Courier New;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+.input-box{
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    font-family: Courier New;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+
+#clues {
+    margin:auto;
+	padding: 50px;
+}
+
+#clues td {
+    vertical-align:top;
+}
+#loginBox{
+	background-color:#00FFFF;
+	padding: 30px;
+	margin: 20px;
+	border-radius: 10px;
+	position:relative;
+	
+}
+
+#crosswordBox{
+	position:relative;
+	padding: 30px;
+	margin: 80px;
+}
+
+.generated_link{
+	background-color: #2EFE2E;
+	text-align: center;
+	font-weight: bold;
+}
+
+#clock {
+	margin:10px;
+    padding: 10px;
+    position:absolute;
+    top: 0px;
+    right: 0px;
+    color: black;
+	background-color:yellow;
+}
+
+#clock .clock-box{
+	text-align: center;
+	width:30px;
+	height:auto;
+	border: none;
+    background-color: transparent;
+}
+
+.empId_div{
+	margin: 10px;
+	padding:10px;
+}
