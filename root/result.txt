@@ -1,4 +1,0 @@
-
-Emp Id: 123456 Score: 0 Time: 00:01
-Emp Id: 7854 Score: 0 Time: 00:03
-Emp Id: 58858 Score: 1 Time: 00:21

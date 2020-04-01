@@ -94,35 +94,35 @@ function sample(){
 } 
 
 function download(){
-	write_ans();
+	// write_ans();
 	var data = '<form id="crossword_form" name="crossword_form"><div id="clock">Time:<input type="text" id="minutes" class="clock-box" value="00" readonly></label>:<input type="text" class="clock-box" id="seconds" value="00" readonly></label></div>' + document.getElementById('crossword_box').innerHTML + '<div class="text-center"><button type="button" class="btn btn-lg btn-info" id="submit_quiz" name="submit_quiz" onclick="check_answer()">Submit Puzzle</button></div></form><hr>' + document.getElementById('clue_box').innerHTML;
 	generate_page(data);
 	
 	
 }
 
-function write_ans(){
+// function write_ans(){
 
-	$.ajax({
-	  type: 'POST',
-	  url: "root/answer.php",//url of receiver file on server
-	  data: stored_chars, //your data
-	  dataType: "text", //text/json...
-	  success: function(xhr, response, options){
-					return true;
-                },
-                error:function(xhr, response, options){
-					return false;
-                } //callback when ajax request finishes
+// 	$.ajax({
+// 	  type: 'POST',
+// 	  url: "root/answer.php",//url of receiver file on server
+// 	  data: stored_chars, //your data
+// 	  dataType: "text", //text/json...
+// 	  success: function(xhr, response, options){
+// 					return true;
+//                 },
+//                 error:function(xhr, response, options){
+// 					return false;
+//                 } //callback when ajax request finishes
 	  
-	});
-}
+// 	});
+// }
 
 function generate_page(data){
 	$.ajax({
 		type: 'POST',
-		url: "download.php",//url of receiver file on server
-		data: data, //your data
+		url: "root/save.php",//url of receiver file on server
+		data: JSON.stringify({'data':data, 'stored_chars': stored_chars}), //your data
 		dataType: "text", //text/json...
 		success: function(xhr, response, jqXHR){
 			$('#created_url').html(xhr);
@@ -138,19 +138,17 @@ function generate_page(data){
 
 function check_answer(){
     var data_array = $("#crossword_form").serializeObject();
-    read_answer_file(data_array);
-	
-}
-
-function read_answer_file(data_array){
+    var grid_id = document.getElementById('grid_id').value;
     $.ajax({
+    	type: 'POST',
         url: "root/answer_read.php",
         dataType:"json",
+        data: grid_id,
         success: function(resp){
             stored_chars = resp;
             checkData(data_array, stored_chars);
             var data =  "\nEmp Id: " + empId + " Score: " + score + " Time: " + document.getElementById("minutes").value + ':'+ document.getElementById("seconds").value;
-            writeFile(data);
+            writeFile(data, grid_id);
             retVal = confirm("Your score is : " + score + '\nPlease click on OK button to close the window');
             if( retVal == true ){
                 window.close();
@@ -161,6 +159,7 @@ function read_answer_file(data_array){
 
         }
     });
+	
 }
 
 function checkData(data_array, stored_chars){
@@ -177,12 +176,12 @@ function checkData(data_array, stored_chars){
     }
 }
 
-function writeFile(data){
+function writeFile(data, grid_id){
 	
 	$.ajax({
 		type: 'POST',
 		url: "root/result.php",//url of receiver file on server
-		data: data, //your data
+		data: JSON.stringify({"data":data, "grid_id":grid_id}), //your data
 		dataType: "text", //text/json...
 		success: function(xhr, response, jqXHR){
 			return true;		
