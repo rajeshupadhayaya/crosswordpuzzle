@@ -11,5 +11,5 @@ if($ON_HEROKU) {
 }
 
 mysqli_set_charset($conn, 'utf8mb4');
-mysqli_select_db($conn, "crossword") or die(mysql_error());	
+mysqli_select_db($conn, "crossword") or die(mysqli_error());	
 ?>
