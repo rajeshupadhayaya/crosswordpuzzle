@@ -9,8 +9,8 @@ include 'db.php';
 $grid_id = file_get_contents("php://input");
 
 $query = 'select answer from answer where puzzle_id="'.$grid_id.'"';
-$result = mysql_query($query);
-$row = mysql_fetch_assoc($result);
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_assoc($result);
 
 echo $row['answer'];
 

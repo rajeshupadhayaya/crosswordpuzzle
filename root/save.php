@@ -55,14 +55,14 @@ window.onload = function(){
 
 $id = uniqid();
 
-$query = mysql_query("INSERT INTO puzzle (puzzle_id, html) value('".$id."', '".base64_encode($data_to_write)."')");
+$query = mysqli_query($conn,"INSERT INTO puzzle (puzzle_id, html) value('".$id."', '".base64_encode($data_to_write)."')");
 if(!$query){
 	$message  = 'Invalid query: ' . mysql_error() . "\n";
     $message .= 'Whole query: ' . $query;
     die($message);
 }
 
-$query = mysql_query("INSERT INTO answer (puzzle_id, answer) value('".$id."', '".json_encode($data->stored_chars)."')");
+$query = mysqli_query($conn,"INSERT INTO answer (puzzle_id, answer) value('".$id."', '".json_encode($data->stored_chars)."')");
 if(!$query){
 	$message  = 'Invalid query: ' . mysql_error() . "\n";
     $message .= 'Whole query: ' . $query;

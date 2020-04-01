@@ -12,7 +12,7 @@ echo $data->data;
 
 $query = "INSERT INTO result (puzzle_id, result) value('".$data->grid_id."', '".htmlentities($data->data)."')";
 
-$result = mysql_query($query);
+$result = mysqli_query($conn, $query);
 
 if(!$result){
 	$message  = 'Invalid query: ' . mysql_error() . "\n";
