@@ -3,10 +3,10 @@
 $ON_HEROKU = getenv('ON_HEROKU');
 
 if($ON_HEROKU) {
-	$conn = mysqli_connect(getenv('HOST'), getenv('USERNAME'), getenv('PASSWORD')) or die(mysql_error());
+	$conn = mysqli_connect(getenv('HOST'), getenv('USERNAME'), getenv('PASSWORD')) or die(mysqli_error());
 	
 }else{
-	$conn = mysqli_connect('localhost', 'root', '') or die(mysql_error());
+	$conn = mysqli_connect('localhost', 'root', '') or die(mysqli_error());
 	
 }
 
